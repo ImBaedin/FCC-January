@@ -11,10 +11,18 @@ const WEATHER_API_URL = (latitude = COOKEVILLE.latitude, longitude = COOKEVILLE.
 // This function should run through these steps:
 // 1. Get the user's location
 // 2. Get the weather
-// 3. Get the name of the location
 // 4. Update the UI
-const updateWeather = () => {
+const updateWeather = async () => {
+	let location = COOKEVILLE;
+	// Check if the user has location enabled
 
+	// If they do, we can change the location object based on their location
+
+	// If not, the location defaults to Cookeville
+
+	// Now we use that location object to hit our API
+
+	// Finally, we have everything we need to update the UI
 }
 
 
