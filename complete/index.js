@@ -27,7 +27,7 @@ const celsiusToFahrenheit = (celsius) =>{
 const updateWeather = async () => {
 	let location = COOKEVILLE;
 	// Check if the user has location enabled
-	if(navigator.geolocation){
+	if(Object.entries(navigator.geolocation).length > 0){
 		// If they do, we can change the location object based on their location
 		const position = await getLocation();
 		location = {
