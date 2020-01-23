@@ -116,7 +116,9 @@ const Line = styled.div`
 	opacity: ${props => props.opacity};
 	padding-left: 2.8em;
 	text-indent: -2.8em;
-	margin: 2px 0px;
+	padding: 2px 0px;
+	margin: -1px 0px;
+	background-color: ${props => props.backgroundColor ? props.backgroundColor : 'transparent'};
 `;
 
 const Code = styled.code`
@@ -174,6 +176,12 @@ const Slide = (props) => {
 	const memoizedLines = useMemo(() => getHighlightedCodeLines(code, lang), [code, lang]);
 
 	const lines = memoizedLines.map((line, index) => {
+		let lineBackground = null;
+
+		ranges.forEach((range)=>{
+			if(index >= range.loc[0] && index <= range.loc[1]) lineBackground = range.backgroundColor;
+		});
+
 		return <Line
 			key={index}
 			ref={startOrEnd(index, loc, start, end)}
@@ -182,7 +190,8 @@ const Slide = (props) => {
 					? getLineNumber(index) + line
 					: line
 			}}
-			opacity={calculateOpacity(index, loc)} />;
+			opacity={calculateOpacity(index, loc)}
+			backgroundColor={lineBackground} />;
 	});
 
 	useEffect(() => {

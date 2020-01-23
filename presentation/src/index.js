@@ -105,11 +105,11 @@ const Presentation = () => (
 			code={require("raw-loader!./code.example").default}
 			ranges={[
 				{ loc: [0, 500], title: "Buckle Up" },
-				{ loc: [0, 1], title: "The Beginning" },
+				{ loc: [0, 1], title: "The Beginning", backgroundColor: "#223b57" },
 				{ loc: [1, 4] },
 				{ loc: [1, 2], note: "Heres a note!" },
 				{ loc: [2, 4] },
-				{ loc: [23, 46], title: "Scroll to element", note: "Here is a note too"}
+				{ loc: [23, 46], title: "Scroll to element", note: "Here is a note too", backgroundColor: "#223b57"}
 		]}/>
 		<Slide>
 			<div>
