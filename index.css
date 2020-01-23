@@ -8,6 +8,12 @@ html, body{
 	overflow: hidden;
 }
 
+@media only screen and (max-width: 600px) {
+	body {
+		flex-direction: column;
+	}
+}
+
 .main-link{
 	position: relative;
 	height: 100%;
