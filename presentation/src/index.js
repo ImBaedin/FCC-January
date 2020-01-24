@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import styled from 'styled-components';
 
 import CodeSlide, { Themes } from './Components/CodeSlide';
 
@@ -27,10 +28,28 @@ import {
 } from 'spectacle';
 
 import Logo from './fcc.svg';
+import VSCode from './vscode.png';
+import GitHub from './github.png';
 
 const theme = {
 
 };
+
+const FillBox = styled(Box)`
+	flex: 1;
+	text-align: ${props => props.textAlign ? props.textAlign : 'left'};
+`;
+
+const ListItemLogo = styled.img`
+	width: 2.5em;
+	height: auto;
+
+	&.github{
+		border-radius: 100%;
+		background-color: white;
+		border: 1px solid white;
+	}
+`;
 
 const template = () => (
 	<FlexBox
@@ -39,12 +58,17 @@ const template = () => (
 		bottom={0}
 		width={1}
 	>
-		<Box padding="0 1em">
+		<FillBox padding="0 1em">
 			<FullScreen />
-		</Box>
-		<Box padding="1em">
+		</FillBox>
+		<FillBox>
+			<Text fontSize="1.5em" bold color="#808080" textAlign="center">
+				<span style={{ color: '#505050' }}>Author:</span> Braedin Jared
+			</Text>
+		</FillBox>
+		<FillBox padding="1em" textAlign="right">
 			<Progress />
-		</Box>
+		</FillBox>
 	</FlexBox>
 );
 
@@ -70,21 +94,18 @@ const Presentation = () => (
 		<Slide
 			backgroundColor="#0a0a23"
 		>
-			<Appear elementNum={0}>
-				<Heading size={1} caps fit color="primary">
-					Full Width
-            </Heading>
-			</Appear>
-			<Appear elementNum={1}>
-				<Heading size={1} caps fit textColor="tertiary">
-					Adjustable Darkness
-            </Heading>
-			</Appear>
-			<Appear elementNum={2}>
-				<Heading size={1} caps fit textColor="primary">
-					Background Imagery
-            </Heading>
-			</Appear>
+			<Heading size={1} caps fit color="primary">Getting Started</Heading>
+			<OrderedList>
+				<Appear elementNum={0}>
+					<ListItem>Download VS Code <Link target="_blank" href="https://code.visualstudio.com/download">Link</Link> <br /> <ListItemLogo src={VSCode} /></ListItem>
+				</Appear>
+				<Appear elementNum={1}>
+					<ListItem>Download Repository <Link target="_blank" href="https://github.com/ImBaedin/FCC-January">Link</Link> <br /> <ListItemLogo src={GitHub} className="github" /></ListItem>
+				</Appear>
+				<Appear elementNum={2}>
+					<ListItem>Download Live Server Extension</ListItem>
+				</Appear>
+			</OrderedList>
 		</Slide>
 		<CodeSlide
 			backgroundColor={"#0d1d2e"}
