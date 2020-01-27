@@ -62,11 +62,11 @@ const template = () => (
 			<FullScreen />
 		</FillBox>
 		<FillBox>
-			<Text fontSize="1.5em" bold color="#808080" textAlign="center">
+			<Text fontSize="1.5em" bold color="#808080" textAlign="center" margin="8px">
 				<span style={{ color: '#505050' }}>Author:</span> Braedin Jared
 			</Text>
 		</FillBox>
-		<FillBox padding="1em" textAlign="right">
+		<FillBox padding="0 1em" textAlign="right">
 			<Progress />
 		</FillBox>
 	</FlexBox>
@@ -84,6 +84,11 @@ const Presentation = () => (
 			<Link target="_blank" href="https://github.com/ImBaedin/FCC-January">
 				<Text fontSize="1.5em" bold caps color="white">
 					View on Github
+				</Text>
+			</Link>
+			<Link target="_blank" href="/complete">
+				<Text fontSize="1.5em" bold caps color="white">
+					Finished project
 				</Text>
 			</Link>
 			<Text fontSize="1em" bold color="#505050">
@@ -123,12 +128,27 @@ const Presentation = () => (
 			lang="js"
 			code={require("raw-loader!./js.example").default}
 			ranges={[
-				{ loc: [0, 500], title: "Walking through some code" },
-				{ loc: [0, 1], title: "The Beginning" },
-				{ loc: [1, 4] },
-				{ loc: [1, 2], note: "Heres a note!" },
-				{ loc: [2, 4] },
-				{ loc: [23, 46] }
+				{ loc: [0, 500], title: "What's already there?" },
+				{ loc: [0, 4], note: "Cookeville's latitude and longitude" },
+				{ loc: [2, 2], note: "Here, 'latitude' is the key and '36.1628' is the value" },
+				{ loc: [2, 2], note: "In the code, we can use 'COOKEVILLE.latitude' to access that value" },
+				{ loc: [6, 8], note: "This is the code to get the weather API URL" },
+				{ loc: [6, 8], note: "It's a function that accepts latitude and longitude as parameters and returns the API URL" },
+				{ loc: [10, 13], note: "Here's some code that we haven't written yet" },
+				{ loc: [10, 13], note: "This is a function that will use the browser to get the location" },
+				{ loc: [15, 18], note: "Here's some more empty code" },
+				{ loc: [15, 18], note: "This is a function that will do temperature conversion for us, since the API returns celsius" },
+				{ loc: [20, 35], note: "Here is our main function" },
+				{ loc: [20, 35], note: "This is where we will get the location, get the weather, and update the UI" },
+				{ loc: [25, 25], note: "We want the location to default to Cookeville" },
+				{ loc: [26, 29], note: "We need to check if the user enabled location services" },
+				{ loc: [28, 28], note: "If they have, we get the location from the browser" },
+				{ loc: [30, 30], note: "If not, it's ok. The location is already Cookeville" },
+				{ loc: [37, 39], note: "This is where we will tell the browser to update the weather every hour" },
+				{ loc: [38, 38], note: "We will set 'HOUR' to contain an interal that equals an hour" },
+				{ loc: [39, 39], note: "All this says is call 'updateWeather' every 'HOUR'" },
+				{ loc: [41, 44], note: "These lines are grabbing some HTML references for us" },
+				{ loc: [46, 47], note: "And the first bit of code we want to run is 'updateWeather'" },
 			]} />
 		<Slide>
 			<div>

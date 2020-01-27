@@ -18980,16 +18980,29 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/code.example":
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/html.example":
 /*!****************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/code.example ***!
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/html.example ***!
   \****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("// This is Cookeville's location\r\nconst COOKEVILLE ={\r\n\tlatitude: 36.1628,\r\n\tlongitude: -85.5016\r\n};\r\n\r\n// This is the weather API url\r\n// I chose to make it a function rather than a static variable to make it easier to use\r\nconst WEATHER_API_URL = (latitude = COOKEVILLE.latitude, longitude = COOKEVILLE.longitude)=>`https://fcc-weather-api.glitch.me/api/current?lat=${latitude}&lon=${longitude}`;\r\n\r\n// This function is responsible for hitting the location API and getting our location\r\nconst getLocation = () =>{\r\n\treturn new Promise(resolve => {\r\n\t\tnavigator.geolocation.getCurrentPosition(position => resolve(position));\r\n\t});\r\n}\r\n\r\n// This function will convert to Fahrenheit for us simple Americans\r\nconst celsiusToFahrenheit = (celsius) =>{\r\n\treturn Math.round(celsius * 9 / 5 + 32);\r\n}\r\n\r\n// This function should run through these steps:\r\n// 1. Get the user's location\r\n// 2. Get the weather\r\n// 4. Update the UI\r\nconst updateWeather = async () => {\r\n\tlet location = COOKEVILLE;\r\n\t// Check if the user has location enabled\r\n\tif(navigator.geolocation){\r\n\t\t// If they do, we can change the location object based on their location\r\n\t\tconst position = await getLocation();\r\n\t\tlocation = {\r\n\t\t\tlatitude: position.coords.latitude,\r\n\t\t\tlongitude: position.coords.longitude\r\n\t\t}\r\n\t}\r\n\t// If not, the location defaults to Cookeville\r\n\r\n\t// Now we use that location object to hit our API\r\n\tconst res = await fetch(WEATHER_API_URL(location.latitude, location.longitude));\r\n\tconst weather = await res.json();\r\n\r\n\t// Finally, we have everything we need to update the UI\r\n\tweatherName.innerHTML = weather.name;\r\n\tweatherTemp.innerHTML = celsiusToFahrenheit(weather.main.temp);\r\n\tweatherLow.innerHTML = celsiusToFahrenheit(weather.main.temp_min);\r\n\tweatherHigh.innerHTML = celsiusToFahrenheit(weather.main.temp_max);\r\n}\r\n\r\n// This is our hour interval\r\nconst HOUR = 1 * 60 * 60 * 1000;\r\nsetInterval(updateWeather, HOUR);\r\n\r\nconst weatherName = document.querySelector('#weather-name');\r\nconst weatherTemp = document.querySelector('#weather-temp');\r\nconst weatherLow = document.querySelector('#weather-low');\r\nconst weatherHigh = document.querySelector('#weather-high');\r\n\r\n// The first thing we do is run the update the weather\r\nupdateWeather();");
+/* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n\t<meta charset=\"UTF-8\">\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n\t<title>Weather</title>\r\n\t<link rel=\"stylesheet\" href=\"./index.css\">\r\n</head>\r\n\r\n<body>\r\n\t<!--[if lt IE 11]>\r\n\t\t\t<p class=\"chromeframe\">You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> or <a href=\"http://www.google.com/chromeframe/?redirect=true\">activate Google Chrome Frame</a> to improve your experience.</p>\r\n\t\t<![endif]-->\r\n\r\n\t<div id=\"weather-wrapper\">\r\n\t\t<div class=\"location\">\r\n\t\t\t<i class=\"fas fa-map-marker\"></i><span id=\"weather-name\">Loading City...</span>\r\n\t\t</div>\r\n\t\t<div class=\"weather\">\r\n\t\t\t<img id=\"weather-icon\" src=\"https://cdn.glitch.com/6e8889e5-7a72-48f0-a061-863548450de5%2F02d.png?1499366021821\">\r\n\t\t\t<div class=\"weather-data\">\r\n\t\t\t\t<div title=\"Temp (F)\" id=\"weather-temp\">45</div>\r\n\t\t\t\t<div class=\"low-high\">\r\n\t\t\t\t\t<span title=\"Low\" id=\"weather-low\">42</span>\r\n\t\t\t\t\t<span title=\"High\" id=\"weather-high\">48</span>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<script src=\"https://kit.fontawesome.com/0abd7d5593.js\" crossorigin=\"anonymous\"></script>\r\n\t<!-- Here is where we import our JavaScript file -->\r\n\t<script src=\"./index.js\"></script>\r\n</body>\r\n\r\n</html>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/js.example":
+/*!**************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/js.example ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("// This is Cookeville's location\r\nconst COOKEVILLE ={\r\n\tlatitude: 36.1628,\r\n\tlongitude: -85.5016\r\n};\r\n\r\n// This is the weather api url\r\n// I chose to make it a function rather than a static variable to make it easier to use\r\nconst WEATHER_API_URL = (latitude = COOKEVILLE.latitude, longitude = COOKEVILLE.longitude)=>`https://fcc-weather-api.glitch.me/api/current?lat=${latitude}&lon=${longitude}`;\r\n\r\n// This function is responsible for hitting the location API and getting our location\r\nconst getLocation = () =>{\r\n\t\r\n}\r\n\r\n// This function will convert to Fahrenheit for us simple Americans\r\nconst celsiusToFahrenheit = (celsius) =>{\r\n\treturn '🤷';\r\n}\r\n\r\n// This function should run through these steps:\r\n// 1. Get the user's location\r\n// 2. Get the weather\r\n// 4. Update the UI\r\nconst updateWeather = async () => {\r\n\tlet location = COOKEVILLE;\r\n\t// Check if the user has location enabled\r\n\tif(){\r\n\t\t// If they do, we can change the location object based on their location\r\n\t}\r\n\t// If not, the location defaults to Cookeville\r\n\r\n\t// Now we use that location object to hit our API\r\n\r\n\t// Finally, we have everything we need to update the UI\r\n}\r\n\r\n// This is our hour interval\r\nconst HOUR = ;\r\nsetInterval(updateWeather, HOUR);\r\n\r\nconst weatherName = document.querySelector('#weather-name');\r\nconst weatherTemp = document.querySelector('#weather-temp');\r\nconst weatherLow = document.querySelector('#weather-low');\r\nconst weatherHigh = document.querySelector('#weather-high');\r\n\r\n// The first thing we do is run the update the weather\r\nupdateWeather();");
 
 /***/ }),
 
@@ -40708,7 +40721,7 @@ function startOrEnd(index, loc, start, end) {
 }
 
 function calculateOpacity(index, loc) {
-  return loc[0] <= index && loc[1] > index ? 1 : 0.2;
+  return loc[0] <= index && loc[1] >= index ? 1 : 0.2;
 }
 
 function getLineNumber(index) {
@@ -40758,7 +40771,9 @@ const Line = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div`
 	opacity: ${props => props.opacity};
 	padding-left: 2.8em;
 	text-indent: -2.8em;
-	margin: 2px 0px;
+	padding: 2px 0px;
+	margin: -1px 0px;
+	background-color: ${props => props.backgroundColor ? props.backgroundColor : 'transparent'};
 `;
 const Code = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].code`
 	display: inline-block;
@@ -40816,13 +40831,18 @@ const Slide = props => {
   const loc = range.loc || [];
   const memoizedLines = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(() => getHighlightedCodeLines(code, lang), [code, lang]);
   const lines = memoizedLines.map((line, index) => {
+    let lineBackground = null;
+    ranges.forEach(range => {
+      if (index >= range.loc[0] && index <= range.loc[1]) lineBackground = range.backgroundColor;
+    });
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Line, {
       key: index,
       ref: startOrEnd(index, loc, start, end),
       dangerouslySetInnerHTML: {
         __html: showLineNumbers ? getLineNumber(index) + line : line
       },
-      opacity: calculateOpacity(index, loc)
+      opacity: calculateOpacity(index, loc),
+      backgroundColor: lineBackground
     });
   });
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
@@ -40941,6 +40961,32 @@ webpackContext.id = "./src/Components/CodeSlide/themes sync recursive ./node_mod
 
 /***/ }),
 
+/***/ "./src/fcc.svg":
+/*!*********************!*\
+  !*** ./src/fcc.svg ***!
+  \*********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "ac2278f0a654c3c145b36b22bb6d7cc3.svg");
+
+/***/ }),
+
+/***/ "./src/github.png":
+/*!************************!*\
+  !*** ./src/github.png ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "3e54ed15b9cd877c5223f5ecf64579df.png");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -40954,128 +41000,218 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Components_CodeSlide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Components/CodeSlide */ "./src/Components/CodeSlide/index.js");
-/* harmony import */ var spectacle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! spectacle */ "./node_modules/spectacle/es/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _Components_CodeSlide__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/CodeSlide */ "./src/Components/CodeSlide/index.js");
+/* harmony import */ var spectacle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! spectacle */ "./node_modules/spectacle/es/index.js");
+/* harmony import */ var _fcc_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./fcc.svg */ "./src/fcc.svg");
+/* harmony import */ var _vscode_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./vscode.png */ "./src/vscode.png");
+/* harmony import */ var _github_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./github.png */ "./src/github.png");
 
 
 
- // SPECTACLE_CLI_THEME_START
 
-const theme = {}; // SPECTACLE_CLI_THEME_END
-// SPECTACLE_CLI_TEMPLATE_START
 
-const template = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_3__["FlexBox"], {
+
+
+
+const theme = {};
+const FillBox = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(spectacle__WEBPACK_IMPORTED_MODULE_4__["Box"])`
+	flex: 1;
+	text-align: ${props => props.textAlign ? props.textAlign : 'left'};
+`;
+const ListItemLogo = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img`
+	width: 2.5em;
+	height: auto;
+
+	&.github{
+		border-radius: 100%;
+		background-color: white;
+		border: 1px solid white;
+	}
+`;
+
+const template = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["FlexBox"], {
   justifyContent: "space-between",
   position: "absolute",
   bottom: 0,
   width: 1
-}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_3__["Box"], {
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(FillBox, {
   padding: "0 1em"
-}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_3__["FullScreen"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_3__["Box"], {
-  padding: "1em"
-}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_3__["Progress"], null))); // SPECTACLE_CLI_TEMPLATE_END
-
-
-const formidableLogo = 'https://avatars2.githubusercontent.com/u/5078602?s=280&v=4';
-const cppCodeBlock = `#include <iostream>
-#include <cstdlib>
-#include <sstream>
-#include <pthread.h>
-
-struct thread_data_t
-{
-   int  thread_id;
-   std::string message;
-};
-
-void *print_thread_message(void *thread_arg)
-{
-   struct thread_data_t *thread_data;
-   thread_data = (struct thread_data_t *) thread_arg;
-
-   cout << "Thread ID: " << thread_data->thread_id;
-   cout << "Message: " << thread_data->message << endl;
-
-   pthread_exit(NULL);
-}
-
-int main()
-{
-  pthread_t threads[NUM_THREADS];
-  struct thread_data_t thread_data[NUM_THREADS];
-
-  for (int i = 0; i < NUM_THREADS; i++)
-  {
-    auto curried_add = [](int x) -> function<int(int)> { return [=](int y) { return x + y; }; };
-    auto answer = curried_add(i)(5);
-
-    std::stringstream message;
-    message << "The math result is " << answer << "!";
-    thread_data.thread_id = i;
-    thread_data.message = message.str();
-    int err = pthread_create(&threads, NULL, print_thread_message, (void *)&thread_data[i]);
-
-    if (err)
-    {
-      exit(-1)
-    }
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["FullScreen"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(FillBox, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Text"], {
+  fontSize: "1.5em",
+  bold: true,
+  color: "#808080",
+  textAlign: "center",
+  margin: "8px"
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  style: {
+    color: '#505050'
   }
+}, "Author:"), " Braedin Jared")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(FillBox, {
+  padding: "0 1em",
+  textAlign: "right"
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Progress"], null)));
 
-  return 0;
-}`; // eslint-disable-next-line react/no-multi-comp
-
-const Presentation = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_3__["Deck"], {
+const Presentation = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Deck"], {
   loop: true,
   theme: theme,
   template: template
-}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_CodeSlide__WEBPACK_IMPORTED_MODULE_2__["default"], {
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Slide"], {
+  backgroundColor: "#0a0a23"
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Heading"], {
+  size: 1
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Image"], {
+  src: _fcc_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+  width: "100%"
+})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Heading"], {
+  size: 1,
+  fit: true,
+  caps: true,
+  color: "white"
+}, "January 2020"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+  target: "_blank",
+  href: "https://github.com/ImBaedin/FCC-January"
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Text"], {
+  fontSize: "1.5em",
+  bold: true,
+  caps: true,
+  color: "white"
+}, "View on Github")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+  target: "_blank",
+  href: "/complete"
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Text"], {
+  fontSize: "1.5em",
+  bold: true,
+  caps: true,
+  color: "white"
+}, "Finished project")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Text"], {
+  fontSize: "1em",
+  bold: true,
+  color: "#505050"
+}, "Navigate with arrows"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Notes"], null, "Let's get started!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Slide"], {
+  backgroundColor: "#0a0a23"
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Heading"], {
+  size: 1,
+  caps: true,
+  fit: true,
+  color: "primary"
+}, "Getting Started"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["OrderedList"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Appear"], {
+  elementNum: 0
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["ListItem"], null, "Download VS Code ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+  target: "_blank",
+  href: "https://code.visualstudio.com/download"
+}, "Link"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ListItemLogo, {
+  src: _vscode_png__WEBPACK_IMPORTED_MODULE_6__["default"]
+}))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Appear"], {
+  elementNum: 1
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["ListItem"], null, "Download Repository ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+  target: "_blank",
+  href: "https://github.com/ImBaedin/FCC-January"
+}, "Link"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ListItemLogo, {
+  src: _github_png__WEBPACK_IMPORTED_MODULE_7__["default"],
+  className: "github"
+}))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Appear"], {
+  elementNum: 2
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["ListItem"], null, "Download Live Server Extension")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_CodeSlide__WEBPACK_IMPORTED_MODULE_3__["default"], {
   backgroundColor: "#0d1d2e",
-  theme: _Components_CodeSlide__WEBPACK_IMPORTED_MODULE_2__["Themes"].dracula,
-  lang: "js",
-  code: __webpack_require__(/*! raw-loader!./code.example */ "./node_modules/raw-loader/dist/cjs.js!./src/code.example").default,
+  theme: _Components_CodeSlide__WEBPACK_IMPORTED_MODULE_3__["Themes"].dracula,
+  lang: "html",
+  code: __webpack_require__(/*! raw-loader!./html.example */ "./node_modules/raw-loader/dist/cjs.js!./src/html.example").default,
   ranges: [{
     loc: [0, 500],
     title: "Buckle Up"
   }, {
-    loc: [0, 1],
-    title: "The Beginning"
-  }, {
-    loc: [1, 4]
-  }, {
-    loc: [1, 2],
-    note: "Heres a note!"
-  }, {
-    loc: [2, 4]
-  }, {
-    loc: [23, 46],
-    title: "Scroll to element",
-    note: "Here is a note too"
+    loc: [34, 34],
+    title: "The import",
+    backgroundColor: "#223b57",
+    note: "Add this line to import the JS file"
   }]
-}), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_3__["Slide"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "slide 2")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_CodeSlide__WEBPACK_IMPORTED_MODULE_2__["default"], {
+}), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_CodeSlide__WEBPACK_IMPORTED_MODULE_3__["default"], {
   backgroundColor: "#0d1d2e",
   transition: [],
-  theme: _Components_CodeSlide__WEBPACK_IMPORTED_MODULE_2__["Themes"].synthwave84,
+  theme: _Components_CodeSlide__WEBPACK_IMPORTED_MODULE_3__["Themes"].synthwave84,
   lang: "js",
-  code: __webpack_require__(/*! raw-loader!./code.example */ "./node_modules/raw-loader/dist/cjs.js!./src/code.example").default,
+  code: __webpack_require__(/*! raw-loader!./js.example */ "./node_modules/raw-loader/dist/cjs.js!./src/js.example").default,
   ranges: [{
     loc: [0, 500],
-    title: "Walking through some code"
+    title: "What's already there?"
   }, {
-    loc: [0, 1],
-    title: "The Beginning"
+    loc: [0, 4],
+    note: "Cookeville's latitude and longitude"
   }, {
-    loc: [1, 4]
+    loc: [2, 2],
+    note: "Here, 'latitude' is the key and '36.1628' is the value"
   }, {
-    loc: [1, 2],
-    note: "Heres a note!"
+    loc: [2, 2],
+    note: "In the code, we can use 'COOKEVILLE.latitude' to access that value"
   }, {
-    loc: [2, 4]
+    loc: [6, 8],
+    note: "This is the code to get the weather API URL"
   }, {
-    loc: [23, 46]
+    loc: [6, 8],
+    note: "It's a function that accepts latitude and longitude as parameters and returns the API URL"
+  }, {
+    loc: [10, 13],
+    note: "Here's some code that we haven't written yet"
+  }, {
+    loc: [10, 13],
+    note: "This is a function that will use the browser to get the location"
+  }, {
+    loc: [15, 18],
+    note: "Here's some more empty code"
+  }, {
+    loc: [15, 18],
+    note: "This is a function that will do temperature conversion for us, since the API returns celsius"
+  }, {
+    loc: [20, 35],
+    note: "Here is our main function"
+  }, {
+    loc: [20, 35],
+    note: "This is where we will get the location, get the weather, and update the UI"
+  }, {
+    loc: [25, 25],
+    note: "We want the location to default to Cookeville"
+  }, {
+    loc: [26, 29],
+    note: "We need to check if the user enabled location services"
+  }, {
+    loc: [28, 28],
+    note: "If they have, we get the location from the browser"
+  }, {
+    loc: [30, 30],
+    note: "If not, it's ok. The location is already Cookeville"
+  }, {
+    loc: [37, 39],
+    note: "This is where we will tell the browser to update the weather every hour"
+  }, {
+    loc: [38, 38],
+    note: "We will set 'HOUR' to contain an interal that equals an hour"
+  }, {
+    loc: [39, 39],
+    note: "All this says is call 'updateWeather' every 'HOUR'"
+  }, {
+    loc: [41, 44],
+    note: "These lines are grabbing some HTML references for us"
+  }, {
+    loc: [46, 47],
+    note: "And the first bit of code we want to run is 'updateWeather'"
   }]
-}));
+}), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(spectacle__WEBPACK_IMPORTED_MODULE_4__["Slide"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "slide 2")));
 
 Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["render"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Presentation, null), document.getElementById('root'));
+
+/***/ }),
+
+/***/ "./src/vscode.png":
+/*!************************!*\
+  !*** ./src/vscode.png ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "225fbbe09689a4a3219ae1e00fe2280b.png");
 
 /***/ })
 
